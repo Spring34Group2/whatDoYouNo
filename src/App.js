@@ -1,42 +1,51 @@
 import './App.css';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // import firebase from './firebase';
 import Header from './Header';
 import Start from './Start';
 import Game from './Game';
 import Leaderboard from './Leaderboard';
 import Footer from './Footer';
+import arrayList from './arrayList';
 
 function App() {
+  const [wordOne, setWordOne] = useState('');
+  const [wordTwo, setWordTwo] = useState('');
+  const [definition, setDefinition] = useState('');
 
   useEffect(() => {
     axios({
-      url: "https://api.datamuse.com/words",
-      method: "GET",
-      
+      url: 'https://api.datamuse.com/words',
+      method: 'GET',
+
       params: {
-        rel_hom: 'peace',
+        rel_hom: arrayList[0],
         // getting homophone
-        md: 'd'
+        md: 'd',
         // getting definition
-      }
+      },
     }).then((response) => {
       console.log(response);
-      console.log(response.data[0])
-      console.log(response.data[0].defs)
-    })
-  }, [])
-    
-
-
+      console.log(response.data[0]);
+      console.log(response.data[0].defs);
+      console.log(response.data[0].defs[0]);
+      // setData(response.data[0].defs[0]);
+      // passing in first value from array (affect)
+      setWordOne(arrayList[0]);
+      // getting the first word response from the data (effect)
+      setWordTwo(response.data[0].word);
+      // definition of the above word
+      setDefinition(response.data[0].defs[0]);
+    });
+  }, []);
 
   return (
     <div className="App">
       <Header />
       <main>
         <Start />
-        <Game />
+        <Game wordOne={wordOne} wordTwo={wordTwo} definition={definition} />
         <Leaderboard />
       </main>
       <Footer />
@@ -46,29 +55,24 @@ function App() {
 
 export default App;
 
-
-                                 // pseudowoodo
+// pseudowoodo
 // WHAT WE'VE DONE
 // connected to api, and searched for homophone and definition
 // connected (in theory) to firebase
 
-
-                              // WHAT WE NEED TO DO
+// WHAT WE NEED TO DO
 // Create array of words that are/have homophones
 // Create counter to keep score
 // create onClick to load information for game
 // create progress bar to track score
 // create animation when player wins (page explodes in fireworks? or SOLITAIRE???)
-// continue to check error handling 
+// continue to check error handling
 
-      // Leaderboard
+// Leaderboard
 // create form for user to submit name
 // store name in firebase
-// create sidebar (maybe whole page?) to display leaderboard 
+// create sidebar (maybe whole page?) to display leaderboard
 
-
-
-
-                               // STREEETTCCHHHH
+// STREEETTCCHHHH
 // after (x) amount of wrong answers, player loses, and michelle comes to their house and drinks their wine
 // create timer to go with progress bar?
