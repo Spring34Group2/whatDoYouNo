@@ -2,6 +2,11 @@ import './App.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 // import firebase from './firebase';
+import Header from './Header';
+import Start from './Start';
+import Game from './Game';
+import Leaderboard from './Leaderboard';
+import Footer from './Footer';
 
 function App() {
 
@@ -28,9 +33,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Howdy world</h1>
-      </header>
+      <Header />
+      <main>
+        <Start />
+        <Game />
+        <Leaderboard />
+      </main>
+      <Footer />
     </div>
   );
 }
