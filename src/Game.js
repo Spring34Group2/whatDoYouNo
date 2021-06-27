@@ -8,13 +8,10 @@ const Game = ({ wordOne, wordTwo, definition }) => {
 
   function handleClick(e) {
     wordTwo === e.target.innerText
-      ? setAnswer(true)      
-      : setAnswer(false)
+      ? setAnswer("true")      
+      : setAnswer("false")
       console.log(answer);
   }
-
-  // randomizer function
-  // 
 
   return (
     <section className="game">
@@ -31,7 +28,7 @@ const Game = ({ wordOne, wordTwo, definition }) => {
       </button>
       {/* wordTwo comes from the data returned */}
       <button onClick={handleClick}>{wordTwo}</button>
-      <p>{answer ? "true" : "false"}</p>
+      <p>{answer}</p>
     </section>
   );
 };
