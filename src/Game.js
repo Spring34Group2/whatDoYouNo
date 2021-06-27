@@ -11,7 +11,12 @@ const Game = ({ wordOne, wordTwo, definition }) => {
     wordTwo === e.target.innerText
       ? setAnswer(true)      
       : setAnswer(false)
+      // testDisplay();
   }
+
+  // function testDisplay() {
+  //   { answer ? <p>yes</p> : <p>noooooooooooo</p> }
+  // }
 
   function increment() {
     // if (answer === "true")
@@ -39,7 +44,8 @@ const Game = ({ wordOne, wordTwo, definition }) => {
         increment();}
         // setScore( score + 1)
         }>{wordTwo}</button>
-      {answer ? <p>yes</p> : <p>noooooooooooo</p>}
+      {/* <p>{testDisplay()}</p> */}
+      { score >= 1 ? <p>yes</p> : ''}
     </section>
   );
 };
