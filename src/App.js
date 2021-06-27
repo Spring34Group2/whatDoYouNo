@@ -1,4 +1,4 @@
-import './App.css';
+import './Sass/App.scss';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 // import firebase from './firebase';

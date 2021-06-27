@@ -1,18 +1,20 @@
 // import arrayList from './arrayList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Game = ({ wordOne, wordTwo, definition }) => {
-  const [answer, setAnswer] = useState(false);
+  const [answer, setAnswer] = useState('');
+
+  useEffect(() => {}, [setAnswer]);
 
   function handleClick(e) {
-    // e.preventDefault();
-
-    setAnswer(true);
-
-    console.log(e.target);
-    console.log(answer);
-    // answer ? <p>Right</p> : <p>Rong</p>;
+    wordTwo === e.target.innerText
+      ? setAnswer(true)      
+      : setAnswer(false)
+      console.log(answer);
   }
+
+  // randomizer function
+  // 
 
   return (
     <section className="game">
@@ -23,21 +25,13 @@ const Game = ({ wordOne, wordTwo, definition }) => {
       <p>{definition}</p>
       {/* wordOne comes from the array list */}
       <button
-        onClick={() => {
-          setAnswer(false);
-        }}
+        onClick={handleClick}
       >
         {wordOne}
       </button>
       {/* wordTwo comes from the data returned */}
-      <button
-        onClick={(e) => {
-          //   setAnswer(true);
-          handleClick(e);
-        }}
-      >
-        {wordTwo}
-      </button>
+      <button onClick={handleClick}>{wordTwo}</button>
+      <p>{answer ? "true" : "false"}</p>
     </section>
   );
 };
