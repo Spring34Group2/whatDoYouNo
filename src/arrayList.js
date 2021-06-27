@@ -10,3 +10,4 @@ const homophones = [
 ];
 
 export default homophones;
+// should export be arrayList?
