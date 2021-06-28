@@ -14,8 +14,11 @@ function App() {
     word: '',
     defs: [],
   });
-  const [wordTwo, setWordTwo] = useState({});
-  const [definition, setDefinition] = useState('');
+  const [wordTwo, setWordTwo] = useState({
+    word: '',
+    defs: [],
+  });
+  // const [definition, setDefinition] = useState('');
 
   useEffect(() => {
     axios({

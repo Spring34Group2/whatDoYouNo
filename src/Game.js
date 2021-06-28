@@ -1,26 +1,24 @@
 // import arrayList from './arrayList';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Game = ({ wordOne, wordTwo }) => {
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
-  console.log({ wordOne });
-  console.log({ wordTwo });
-
-  useEffect(() => {}, [setAnswer]);
+  // console.log({ wordOne });
+  // console.log({ wordTwo });
 
   function handleClick(e) {
-    wordTwo.word === e.target.innerText
-      ? setAnswer('true')
-      : setAnswer('false');
-  }
-
-  function increment() {
-    // if (answer === "true")
-    {
-      setScore(score + 1);
+    if (wordTwo.word === e.target.innerText) {
+      setAnswer('correct');
+      setScore(score + 1);  
+    } else {
+      setAnswer('incorrect');
     }
   }
+
+  // function increment() {
+  //   setScore(score + 1);  
+  // }
 
   return (
     <section className="game">
@@ -39,21 +37,17 @@ const Game = ({ wordOne, wordTwo }) => {
       <button
         onClick={(e) => {
           handleClick(e);
-          increment();
         }}
       >
         {wordTwo.word}
       </button>
-      {wordOne.defs.length ? (
-        <p>The definition exists on wordOne</p>
-      ) : (
-        <p>The definition does not exist on wordOne</p>
-      )}
-      {wordTwo.defs.length ? (
+      <p>{answer}</p>
+      {/* {answer !== undefined && answer ? <p>Correct!</p> : <p>Incorrect! You Loser.</p>} */}
+      {/* {wordTwo.defs.length ? (
         <p>The definition exists on wordTwo</p>
       ) : (
         <p>The definition does not exist on wordTwo</p>
-      )}
+      )} */}
     </section>
   );
 };
