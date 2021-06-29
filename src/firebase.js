@@ -3,14 +3,14 @@ import 'firebase/database';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDrZjPOFZmBIdYeiX1m0b4FXvh-ccs7agU",
-    authDomain: "what-do-you-no-1d01a.firebaseapp.com",
-    projectId: "what-do-you-no-1d01a",
-    storageBucket: "what-do-you-no-1d01a.appspot.com",
-    messagingSenderId: "569747745173",
-    appId: "1:569747745173:web:868aa30cc81f6c54d56e9c"
-  };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+  apiKey: "AIzaSyB4kuJ2rL3TJzsHaSKvFxzuSypBW-jhlgU",
+  authDomain: "what-do-you-no-73ea0.firebaseapp.com",
+  projectId: "what-do-you-no-73ea0",
+  storageBucket: "what-do-you-no-73ea0.appspot.com",
+  messagingSenderId: "520731347776",
+  appId: "1:520731347776:web:b03e23e8a5e688136a88a5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 export default firebase;
