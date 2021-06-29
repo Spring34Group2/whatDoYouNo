@@ -1,11 +1,86 @@
-// import arrayList from './arrayList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import arrayList from './arrayList';
 
-const Game = ({ wordOne, wordTwo }) => {
+const Game = () => {
+
+  //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
-  // console.log({ wordOne });
-  // console.log({ wordTwo });
+  const [wordOne, setWordOne] = useState({
+    word: '',
+    defs: [],
+  });
+  const [wordTwo, setWordTwo] = useState({
+    word: '',
+    defs: [],
+  });
+
+  // variables
+  let usedNumber = [];
+  let value = getRandomIndex();
+
+  // creating functions
+  useEffect(() => {
+    // value = getRandomIndex();
+    getData();
+  }, []);
+
+  function randomNumber() {
+    const max = arrayList.length;
+    // let usedNumber = [];
+    let randomNumber = Math.floor(Math.random() * max);
+    // console.log(randomNumber);
+    return randomNumber;
+  }
+
+  function getRandomIndex() {
+    // let arrayCopy = [...arrayList];
+    // let usedNumber = [];
+    let number = randomNumber();
+    // console.log(number);
+    if (usedNumber.includes(number)) {
+      usedNumber.push(number);
+      console.log(usedNumber);
+      console.log(number);
+      getRandomIndex();
+    } else {
+      usedNumber.push(number);
+      console.log(usedNumber);
+      console.log(number);
+      return number;
+    }
+  }
+
+  // API CALL 
+  function getData() {
+    axios({
+      url: 'https://api.datamuse.com/words',
+      method: 'GET',
+      params: {
+        rel_hom: arrayList[value],
+        // getting homophone
+        md: 'd',
+        // getting definition
+      },
+    }).then((response) => {
+      // console.log(response);
+      // setData(response.data[0].defs[0]);
+      // passing in first value from array (affect)
+      setWordOne({
+        word: arrayList[value],
+        defs: [],
+      });
+      let answer = {};
+      answer.word = response.data[0].word;
+      answer.defs = [response.data[0].defs[0]];
+      // console.log(answer);
+
+      // getting the first word response from the data (effect)
+      setWordTwo(answer);
+      // definition of the above word
+    });
+  }
 
   function handleClick(e) {
     if (wordTwo.word === e.target.innerText) {
@@ -15,10 +90,6 @@ const Game = ({ wordOne, wordTwo }) => {
       setAnswer('incorrect');
     }
   }
-
-  // function increment() {
-  //   setScore(score + 1);  
-  // }
 
   return (
     <section className="game">
@@ -34,6 +105,7 @@ const Game = ({ wordOne, wordTwo }) => {
       {/* wordOne comes from the array list */}
       <button onClick={handleClick}>{wordOne.word}</button>
       {/* wordTwo comes from the data returned */}
+
       <button
         onClick={(e) => {
           handleClick(e);
@@ -42,18 +114,15 @@ const Game = ({ wordOne, wordTwo }) => {
         {wordTwo.word}
       </button>
       <p>{answer}</p>
-      {/* {answer !== undefined && answer ? <p>Correct!</p> : <p>Incorrect! You Loser.</p>} */}
-      {/* {wordTwo.defs.length ? (
-        <p>The definition exists on wordTwo</p>
-      ) : (
-        <p>The definition does not exist on wordTwo</p>
-      )} */}
+      <button
+        onClick={() => {
+          getRandomIndex();
+          getData();
+        }}>
+        NEW INDEX
+      </button>
+
     </section>
   );
 };
 export default Game;
-// counter pseudo
-// set useState as integer with value of 0
-// create function to update state (by + 1)
-// + 1 if value = true?
-// display message(or console log) if successful
