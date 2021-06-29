@@ -20,13 +20,49 @@ function App() {
   });
   // const [definition, setDefinition] = useState('');
 
-  useEffect(() => {
+  function randomNumber() {
+    const max = arrayList.length;
+    // let usedNumber = [];
+    let randomNumber = Math.floor(Math.random() * max);
+    // console.log(randomNumber);
+    return randomNumber;
+  }
+
+  let usedNumber = [];
+
+  function getRandomIndex() {
+    // let arrayCopy = [...arrayList];
+    // let usedNumber = [];
+    let number = randomNumber();
+    // console.log(number);
+    if (usedNumber.includes(number)) {
+      usedNumber.push(number);
+      console.log(usedNumber);
+      console.log(number);
+      getRandomIndex();
+    } else {
+      usedNumber.push(number);
+      console.log(usedNumber);
+      console.log(number);
+      return number;
+    }
+  }
+
+  let value = getRandomIndex();
+  // console.log(value);
+
+  // randomNumber();
+  // getRandomIndex();
+  // getRandomIndex();
+  // getRandomIndex();
+
+  function getData() {
     axios({
       url: 'https://api.datamuse.com/words',
       method: 'GET',
 
       params: {
-        rel_hom: arrayList[0],
+        rel_hom: arrayList[value],
         // getting homophone
         md: 'd',
         // getting definition
@@ -52,6 +88,11 @@ function App() {
       // definition of the above word
       // setDefinition(response.data[0].defs[0]);
     });
+  }
+
+  useEffect(() => {
+    // value = getRandomIndex();
+    getData();
   }, []);
 
   return (
@@ -64,6 +105,24 @@ function App() {
           wordTwo={wordTwo}
           // definition={definition}
         />
+        {/* {usedNumber.map((number) => {
+          return (
+            <>
+              <p>{number}</p>
+              <p>{number}</p>
+              <p>{number}</p>
+              <p>{number}</p>
+            </>
+          );
+        })} */}
+        <button
+          onClick={() => {
+            getRandomIndex();
+            getData();
+          }}
+        >
+          NEW INDEX
+        </button>
         <Leaderboard />
       </main>
       <Footer />
