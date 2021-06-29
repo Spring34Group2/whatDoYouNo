@@ -7,11 +7,14 @@ const Game = () => {
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
+  const [buttons, setButtons] = useState([]);
   const [wordOne, setWordOne] = useState({
+    // from arrayList
     word: '',
     defs: [],
   });
   const [wordTwo, setWordTwo] = useState({
+    // from API
     word: '',
     defs: [],
   });
@@ -19,11 +22,19 @@ const Game = () => {
   // variables
   let usedNumber = [];
   let value = getRandomIndex();
+  // let buttonShuffle;
+  // console.log(buttonShuffle)
+
+  function getButtons() {
+    let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
+    setButtons(buttonShuffle);
+  };
 
   // creating functions
   useEffect(() => {
     // value = getRandomIndex();
     getData();
+    
   }, []);
 
   function randomNumber() {
@@ -78,6 +89,8 @@ const Game = () => {
 
       // getting the first word response from the data (effect)
       setWordTwo(answer);
+      getButtons();
+      
       // definition of the above word
     });
   }
@@ -91,6 +104,9 @@ const Game = () => {
     }
   }
 
+  console.log(buttons)
+
+
   return (
     <section className="game">
       <div className="counter">
@@ -103,17 +119,21 @@ const Game = () => {
         <p>{wordTwo.defs[0]}</p>
       ) : null}
       {/* wordOne comes from the array list */}
-      <button onClick={handleClick}>{wordOne.word}</button>
-      {/* wordTwo comes from the data returned */}
 
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        {wordTwo.word}
-      </button>
+      {
+          buttons.map((item, index) => {
+            return (
+              <button key={index}onClick={(e) => {
+                handleClick(e);
+              }}>{item.word}</button>
+              )
+         })
+      }
+
+        
+
       <p>{answer}</p>
+      
       <button
         onClick={() => {
           getRandomIndex();
@@ -122,7 +142,28 @@ const Game = () => {
         NEW INDEX
       </button>
 
+
+
+
+      {/* <button onClick={handleClick}>{wordOne.word}</button>
+      {/* wordTwo comes from the data returned */}
+
+      {/* <button
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        {wordTwo.word}
+      </button>
+      
+       */}
+
     </section>
   );
 };
 export default Game;
+
+
+// create new state that is empty array
+// this will store value from wordOne & wordTwo (in array)
+//
