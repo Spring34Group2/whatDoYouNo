@@ -8,7 +8,6 @@ import Game from './Game';
 import Leaderboard from './Leaderboard';
 import Footer from './Footer';
 import arrayList from './arrayList';
-
 function App() {
   const [wordOne, setWordOne] = useState({
     word: '',
@@ -60,7 +59,6 @@ function App() {
     axios({
       url: 'https://api.datamuse.com/words',
       method: 'GET',
-
       params: {
         rel_hom: arrayList[value],
         // getting homophone
@@ -75,10 +73,9 @@ function App() {
       // setData(response.data[0].defs[0]);
       // passing in first value from array (affect)
       setWordOne({
-        word: arrayList[0],
+        word: arrayList[value],
         defs: [],
       });
-
       let answer = {};
       answer.word = response.data[0].word;
       answer.defs = [response.data[0].defs[0]];
@@ -94,7 +91,6 @@ function App() {
     // value = getRandomIndex();
     getData();
   }, []);
-
   return (
     <div className="App">
       <Header />
@@ -103,7 +99,7 @@ function App() {
         <Game
           wordOne={wordOne}
           wordTwo={wordTwo}
-          // definition={definition}
+        // definition={definition}
         />
         {/* {usedNumber.map((number) => {
           return (
@@ -129,14 +125,11 @@ function App() {
     </div>
   );
 }
-
 export default App;
-
 // pseudowoodo
 // WHAT WE'VE DONE
 // connected to api, and searched for homophone and definition
 // connected (in theory) to firebase
-
 // WHAT WE NEED TO DO
 // Create array of words that are/have homophones
 // Create counter to keep score
@@ -144,12 +137,10 @@ export default App;
 // create progress bar to track score
 // create animation when player wins (page explodes in fireworks? or SOLITAIRE???)
 // continue to check error handling
-
 // Leaderboard
 // create form for user to submit name
 // store name in firebase
 // create sidebar (maybe whole page?) to display leaderboard
-
 // STREEETTCCHHHH
 // after (x) amount of wrong answers, player loses, and michelle comes to their house and drinks their wine
 // create timer to go with progress bar?

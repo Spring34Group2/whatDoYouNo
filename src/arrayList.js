@@ -13,9 +13,7 @@ const homophones = [
   'draft',
   'duel',
 ];
-
 export default homophones;
-
 /*
 [
 'effect',
