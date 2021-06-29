@@ -18,15 +18,6 @@ function App() {
     defs: [],
   });
   // const [definition, setDefinition] = useState('');
-<<<<<<< HEAD
-  function getRandomIndex() {
-    let arrayCopy = [...arrayList];
-    console.log(arrayCopy.splice(1))
-    console.log(arrayCopy);
-  }
-  getRandomIndex();
-  useEffect(() => {
-=======
 
   function randomNumber() {
     const max = arrayList.length;
@@ -65,7 +56,6 @@ function App() {
   // getRandomIndex();
 
   function getData() {
->>>>>>> 73cca6b2340d60a07cf31ea8ebc63924b97df3b5
     axios({
       url: 'https://api.datamuse.com/words',
       method: 'GET',
@@ -83,7 +73,7 @@ function App() {
       // setData(response.data[0].defs[0]);
       // passing in first value from array (affect)
       setWordOne({
-        word: arrayList[0],
+        word: arrayList[value],
         defs: [],
       });
       let answer = {};

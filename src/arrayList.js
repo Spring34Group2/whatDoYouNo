@@ -14,10 +14,6 @@ const homophones = [
   'duel',
 ];
 export default homophones;
-<<<<<<< HEAD
-=======
-
->>>>>>> 73cca6b2340d60a07cf31ea8ebc63924b97df3b5
 /*
 [
 'effect',
@@ -34,8 +30,4 @@ export default homophones;
 'draught',
 'dual'
 ]
-<<<<<<< HEAD
 */
-=======
-*/
->>>>>>> 73cca6b2340d60a07cf31ea8ebc63924b97df3b5
