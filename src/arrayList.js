@@ -1,12 +1,35 @@
 const homophones = [
   'affect',
-  'effect',
   'pair',
-  'pare',
   'arc',
-  'ark',
   'stationary',
-  'stationery',
+  'bear',
+  'allowed',
+  'bard',
+  'beech',
+  'council',
+  'cite',
+  'discreet',
+  'draft',
+  'duel',
 ];
 
 export default homophones;
+
+/*
+[
+'effect',
+'pare',
+'ark',
+'stationery',
+'bare',
+'aloud',
+'barred',
+'beach',
+'counsel',
+'site',
+'discrete',
+'draught',
+'dual'
+]
+*/
