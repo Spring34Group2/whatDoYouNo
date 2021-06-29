@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Start = () => {
     return (
@@ -11,7 +11,9 @@ const Start = () => {
             <p>
             Bag baltimore chop tigers grass screwball scorecard pennant butcher boy. Triple-A batting average third baseman cracker jack butcher boy petey around the horn stance. 4-6-3 hot dog disabled list pinch hit no-hitter pull crooked number. Series batter's box fair balk hitter, sidearm wild pitch. First baseman fair choke up sacrifice fly gapper walk off reliever scorecard. Small ball league first baseman game play count assist fall classic first baseman.
             </p>
-            <button>Start</button>
+            <Link to={`/game/`}>
+                <button>Start</button>
+            </Link>
         </div>
     )
 }
