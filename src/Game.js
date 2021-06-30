@@ -95,9 +95,11 @@ const Game = () => {
         <p>Score: {score}</p>
         <p>Round: {rounds}</p>
       </div>
-      {rounds >= 10
-        ? (<Form />)
-        : showDefinition && (
+
+      {rounds >= 10 ? (
+        <Form />
+      ) : (
+        showDefinition && (
           <div>
             <h3>Definition</h3>
             {wordOne.defs.length ? (
@@ -106,8 +108,19 @@ const Game = () => {
               <p>{wordTwo.defs[0]}</p>
             ) : null}
             {/* wordOne comes from the array list */}
-            <button onClick={handleClick}>{wordOne.word}</button>
+            <button
+              onClick={(e) => {
+                handleClick(e);
+                setShowDefinition(false);
+                setShowNextQuestion(true);
+                console.log(showDefinition);
+                console.log(showNextQuestion);
+              }}
+            >
+              {wordOne.word}
+            </button>
             {/* wordTwo comes from the data returned */}
+
             <button
               onClick={(e) => {
                 handleClick(e);
@@ -120,7 +133,8 @@ const Game = () => {
               {wordTwo.word}
             </button>
           </div>
-        )}
+        )
+      )}
       {showNextQuestion && (
         <>
           <p>{answer}</p>
