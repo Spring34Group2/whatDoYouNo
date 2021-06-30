@@ -39,6 +39,7 @@ const Game = () => {
     // getButtons();
     getData();
     setButtons(buttonShuffle);
+    console.log(buttons)
   }, []);
 
   function randomNumber() {
