@@ -1,29 +1,10 @@
 import firebase from './firebase';
 import { useEffect, useState } from 'react';
-import Form from './Form';
 
 const Leaderboard = () => {
 
 const [boardList, setBoardList] = useState([])
-const [userInput, setUserInput] = useState('');
 
-// this function will store information about what the user is typing into the input
-// and will update our userInput state
-const handleChange = (event) => {
-    setUserInput(event.target.value);
-}
-
- // this function is going to handle pushing the new username to firebase
-const handleClick = (event) => {
-    event.preventDefault();
-    // reference our database
-    const dbRef = firebase.database().ref();
-    // here we will grab the userInput and push it to Firebase
-    dbRef.push(userInput)
-
-    // clear the input
-    setUserInput('')
-}
 
 useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -64,9 +45,6 @@ setBoardList(newState)
                     })
                 }   
             </ul>
-            <Form handleChange = {handleChange}
-            handleClick = {handleClick}
-            />
         </section>
     )
 }
