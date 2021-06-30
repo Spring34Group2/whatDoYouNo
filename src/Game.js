@@ -8,6 +8,8 @@ const Game = () => {
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
   const [rounds, setRounds] = useState(1);
+  const [showDefinition, setShowDefinition] = useState(true);
+  const [showNextQuestion, setShowNextQuestion] = useState(false);
   const [wordOne, setWordOne] = useState({
     word: '',
     defs: [],
@@ -104,25 +106,44 @@ const Game = () => {
       {rounds >= 10 ? (
         <Form />
       ) : (
-        <div>
-          <h3>Definition</h3>
-          {wordOne.defs.length ? (
-            <p>{wordOne.defs[0]}</p>
-          ) : wordTwo.defs.length ? (
-            <p>{wordTwo.defs[0]}</p>
-          ) : null}
-          {/* wordOne comes from the array list */}
-          <button onClick={handleClick}>{wordOne.word}</button>
-          {/* wordTwo comes from the data returned */}
+        showDefinition && (
+          <div>
+            <h3>Definition</h3>
+            {wordOne.defs.length ? (
+              <p>{wordOne.defs[0]}</p>
+            ) : wordTwo.defs.length ? (
+              <p>{wordTwo.defs[0]}</p>
+            ) : null}
+            {/* wordOne comes from the array list */}
+            <button
+              onClick={(e) => {
+                handleClick(e);
+                setShowDefinition(false);
+                setShowNextQuestion(true);
+                console.log(showDefinition);
+                console.log(showNextQuestion);
+              }}
+            >
+              {wordOne.word}
+            </button>
+            {/* wordTwo comes from the data returned */}
 
-          <button
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            {wordTwo.word}
-          </button>
-
+            <button
+              onClick={(e) => {
+                handleClick(e);
+                setShowDefinition(false);
+                setShowNextQuestion(true);
+                console.log(showDefinition);
+                console.log(showNextQuestion);
+              }}
+            >
+              {wordTwo.word}
+            </button>
+          </div>
+        )
+      )}
+      {showNextQuestion && (
+        <>
           <p>{answer}</p>
 
           <button
@@ -130,11 +151,13 @@ const Game = () => {
               getRandomIndex();
               getData();
               setRounds(rounds + 1);
+              setShowDefinition(!showDefinition);
+              setShowNextQuestion(!showNextQuestion);
             }}
           >
             NEW INDEX
           </button>
-        </div>
+        </>
       )}
     </section>
   );
