@@ -97,7 +97,7 @@ const Game = () => {
       </div>
 
       {rounds >= 10 ? (
-        <Form />
+        <Form score={score} />
       ) : (
         showDefinition && (
           <div>
