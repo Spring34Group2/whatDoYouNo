@@ -22,19 +22,23 @@ const Game = () => {
   // variables
   let usedNumber = [];
   let value = getRandomIndex();
+  let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
   // let buttonShuffle;
   // console.log(buttonShuffle)
 
-  function getButtons() {
-    let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
-    setButtons(buttonShuffle);
-  };
+  // function getButtons() {
+  //   let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
+  //   setButtons(buttonShuffle);
+    
+
+  // };
 
   // creating functions
   useEffect(() => {
     // value = getRandomIndex();
+    // getButtons();
     getData();
-    
+    setButtons(buttonShuffle);
   }, []);
 
   function randomNumber() {
@@ -89,7 +93,7 @@ const Game = () => {
 
       // getting the first word response from the data (effect)
       setWordTwo(answer);
-      getButtons();
+      
       
       // definition of the above word
     });
@@ -104,7 +108,7 @@ const Game = () => {
     }
   }
 
-  console.log(buttons)
+  // console.log(buttons)
 
 
   return (
@@ -120,10 +124,10 @@ const Game = () => {
       ) : null}
       {/* wordOne comes from the array list */}
 
-      {
+      { 
           buttons.map((item, index) => {
             return (
-              <button key={index}onClick={(e) => {
+              <button key={index} onClick={(e) => {
                 handleClick(e);
               }}>{item.word}</button>
               )
