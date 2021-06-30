@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import arrayList from './arrayList';
 import Form from './Form';
-
 const Game = () => {
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
   const [rounds, setRounds] = useState(1);
+  const [showDefinition, setShowDefinition] = useState(true);
+  const [showNextQuestion, setShowNextQuestion] = useState(false);
   const [wordOne, setWordOne] = useState({
     word: '',
     defs: [],
@@ -16,17 +17,14 @@ const Game = () => {
     word: '',
     defs: [],
   });
-
   // variables
   let usedNumber = [];
   let value = getRandomIndex();
-
   // creating functions
   useEffect(() => {
     // value = getRandomIndex();
     getData();
   }, []);
-
   function randomNumber() {
     const max = arrayList.length;
     // let usedNumber = [];
@@ -34,7 +32,6 @@ const Game = () => {
     // console.log(randomNumber);
     return randomNumber;
   }
-
   function getRandomIndex() {
     // let arrayCopy = [...arrayList];
     // let usedNumber = [];
@@ -54,7 +51,6 @@ const Game = () => {
       return number;
     }
   }
-
   // API CALL
   function getData() {
     axios({
@@ -78,13 +74,11 @@ const Game = () => {
       answer.word = response.data[0].word;
       answer.defs = [response.data[0].defs[0]];
       // console.log(answer);
-
       // getting the first word response from the data (effect)
       setWordTwo(answer);
       // definition of the above word
     });
   }
-
   function handleClick(e) {
     if (wordTwo.word === e.target.innerText) {
       setAnswer('correct');
@@ -93,48 +87,55 @@ const Game = () => {
       setAnswer('incorrect');
     }
   }
-
+  console.log(showDefinition);
+  console.log(showNextQuestion);
   return (
     <section className="game">
       <div className="counter">
         <p>Score: {score}</p>
         <p>Round: {rounds}</p>
       </div>
-
-      {rounds >= 10 ? (
-        <Form />
-      ) : (
-        <div>
-          <h3>Definition</h3>
-          {wordOne.defs.length ? (
-            <p>{wordOne.defs[0]}</p>
-          ) : wordTwo.defs.length ? (
-            <p>{wordTwo.defs[0]}</p>
-          ) : null}
-          {/* wordOne comes from the array list */}
-          <button onClick={handleClick}>{wordOne.word}</button>
-          {/* wordTwo comes from the data returned */}
-
-          <button
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            {wordTwo.word}
-          </button>
-
+      {rounds >= 10
+        ? (<Form />)
+        : showDefinition && (
+          <div>
+            <h3>Definition</h3>
+            {wordOne.defs.length ? (
+              <p>{wordOne.defs[0]}</p>
+            ) : wordTwo.defs.length ? (
+              <p>{wordTwo.defs[0]}</p>
+            ) : null}
+            {/* wordOne comes from the array list */}
+            <button onClick={handleClick}>{wordOne.word}</button>
+            {/* wordTwo comes from the data returned */}
+            <button
+              onClick={(e) => {
+                handleClick(e);
+                setShowDefinition(false);
+                setShowNextQuestion(true);
+                console.log(showDefinition);
+                console.log(showNextQuestion);
+              }}
+            >
+              {wordTwo.word}
+            </button>
+          </div>
+        )}
+      {showNextQuestion && (
+        <>
           <p>{answer}</p>
-
           <button
             onClick={() => {
               getRandomIndex();
               getData();
               setRounds(rounds + 1);
+              setShowDefinition(!showDefinition);
+              setShowNextQuestion(!showNextQuestion);
             }}
           >
             NEW INDEX
           </button>
-        </div>
+        </>
       )}
     </section>
   );
