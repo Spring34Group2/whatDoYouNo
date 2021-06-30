@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import arrayList from './arrayList';
+import Form from './Form';
 
 const Game = () => {
-
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
+  const [rounds, setRounds] = useState(1);
   const [wordOne, setWordOne] = useState({
     word: '',
     defs: [],
@@ -48,11 +49,13 @@ const Game = () => {
       usedNumber.push(number);
       console.log(usedNumber);
       console.log(number);
+      // for rounds
+      // setRounds(rounds + 1);
       return number;
     }
   }
 
-  // API CALL 
+  // API CALL
   function getData() {
     axios({
       url: 'https://api.datamuse.com/words',
@@ -85,7 +88,7 @@ const Game = () => {
   function handleClick(e) {
     if (wordTwo.word === e.target.innerText) {
       setAnswer('correct');
-      setScore(score + 1);  
+      setScore(score + 1);
     } else {
       setAnswer('incorrect');
     }
@@ -95,33 +98,44 @@ const Game = () => {
     <section className="game">
       <div className="counter">
         <p>Score: {score}</p>
+        <p>Round: {rounds}</p>
       </div>
-      <h3>Definition</h3>
-      {wordOne.defs.length ? (
-        <p>{wordOne.defs[0]}</p>
-      ) : wordTwo.defs.length ? (
-        <p>{wordTwo.defs[0]}</p>
-      ) : null}
-      {/* wordOne comes from the array list */}
-      <button onClick={handleClick}>{wordOne.word}</button>
-      {/* wordTwo comes from the data returned */}
 
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        {wordTwo.word}
-      </button>
-      <p>{answer}</p>
-      <button
-        onClick={() => {
-          getRandomIndex();
-          getData();
-        }}>
-        NEW INDEX
-      </button>
+      {rounds >= 10 ? (
+        <Form />
+      ) : (
+        <div>
+          <h3>Definition</h3>
+          {wordOne.defs.length ? (
+            <p>{wordOne.defs[0]}</p>
+          ) : wordTwo.defs.length ? (
+            <p>{wordTwo.defs[0]}</p>
+          ) : null}
+          {/* wordOne comes from the array list */}
+          <button onClick={handleClick}>{wordOne.word}</button>
+          {/* wordTwo comes from the data returned */}
 
+          <button
+            onClick={(e) => {
+              handleClick(e);
+            }}
+          >
+            {wordTwo.word}
+          </button>
+
+          <p>{answer}</p>
+
+          <button
+            onClick={() => {
+              getRandomIndex();
+              getData();
+              setRounds(rounds + 1);
+            }}
+          >
+            NEW INDEX
+          </button>
+        </div>
+      )}
     </section>
   );
 };
