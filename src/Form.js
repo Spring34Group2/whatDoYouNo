@@ -17,7 +17,7 @@ const Form = (props) => {
         // reference our database
         const dbRef = firebase.database().ref();
         // here we will grab the userInput and push it to Firebase
-
+        
         dbRef.push({name: userInput, score: props.score})
 
         // clear the input
