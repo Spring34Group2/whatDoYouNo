@@ -12,6 +12,18 @@ const homophones = [
   'discreet',
   'draft',
   'duel',
+  'broach',
+  'bridal',
+  'phase',
+  'fir',
+  'earn',
+  'flex',
+  'fowl',
+  'gate',
+  'jeans',
+  'gourd',
+  'grate',
+  'horde'
 ];
 export default homophones;
 /*
@@ -28,6 +40,18 @@ export default homophones;
 'site',
 'discrete',
 'draught',
-'dual'
+'dual',
+'brooch',
+'bridle',
+'faze',
+'fur',
+'urn',
+'flecks',
+'foul',
+'gait',
+'genes',
+'gored',
+'great',
+'hoard'
 ]
 */
