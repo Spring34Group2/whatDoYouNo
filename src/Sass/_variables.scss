@@ -24,6 +24,8 @@ $background: #e3f4f3;
     font-family: $base-font;
     font-size: $size;
     text-transform: uppercase;
+    border: none;
+    cursor: pointer;
 }
 
 @mixin h1 {
@@ -47,7 +49,7 @@ $background: #e3f4f3;
 }
 
 @mixin darkBoxShadow {
-    box-shadow: black 15px 15px;
+    box-shadow: #e6e6e6 15px 15px;
     // change colour to whatever is in guide
 }
 

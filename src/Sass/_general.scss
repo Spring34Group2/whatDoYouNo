@@ -8,6 +8,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
     margin: 0;
     padding: 0;
@@ -22,4 +23,13 @@ img {
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+}
+
+ul {
+    list-style-type: none;
 }

@@ -127,29 +127,30 @@ const Game = () => {
               </div>
       
             {/* wordOne comes from the array list */}
+            <div className="wordsContainer">
+              <button
+                onClick={(e) => {
+                  handleClick(e);
+                  setShowDefinition(false);
+                  setShowNextQuestion(true);
+                }}
+              >
+                {/* {wordOne.word} */}
+                {buttonOne}
+              </button>
+              {/* wordTwo comes from the data returned */}
 
-            <button
-              onClick={(e) => {
-                handleClick(e);
-                setShowDefinition(false);
-                setShowNextQuestion(true);
-              }}
-            >
-              {/* {wordOne.word} */}
-              {buttonOne}
-            </button>
-            {/* wordTwo comes from the data returned */}
-
-            <button
-              onClick={(e) => {
-                handleClick(e);
-                setShowDefinition(false);
-                setShowNextQuestion(true);
-              }}
-            >
-              {/* {wordTwo.word} */}
-              {buttonTwo}
-            </button>
+              <button
+                onClick={(e) => {
+                  handleClick(e);
+                  setShowDefinition(false);
+                  setShowNextQuestion(true);
+                }}
+              >
+                {/* {wordTwo.word} */}
+                {buttonTwo}
+              </button>
+            </div>
           </div>
         )
       )}
