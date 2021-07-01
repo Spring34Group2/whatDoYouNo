@@ -19,16 +19,16 @@ h3:after {
     border-bottom: $secondary 5px solid;
 }
 
-// button {
-//     @include button(1rem);
-//     &:hover {
-//         color: $secondary;
-//         &:active {
-//             transform: scale(0.98);
-//             box-shadow: 3px 2px 22px 1px rgba(85, 85, 85, 0.24);
-//         }
-//     }
-// }
+button {
+    @include button(1rem);
+    // text-transform: uppercase;
+    &:hover {
+        color: $secondary;
+        &:active {
+            transform: scale(0.98);
+            box-shadow: 3px 2px 22px 1px rgba(85, 85, 85, 0.24);
+        }
+    }}
 
 .mainFlex {
     display: flex;
