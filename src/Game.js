@@ -79,7 +79,7 @@ const Game = () => {
       answer.word = response.data[0].word;
       answer.defs = [response.data[0].defs[0]];
       // slicing the added n, v, adv, adj from the definition
-      answer.defs[0] = answer.defs[0].slice(answer.defs[0].indexOf(' '));
+      answer.defs[0] = answer.defs[0].slice(answer.defs[0].indexOf('\t'));
       // console.log(answer);
       // getting the first word response from the data (effect)
       setWordTwo(answer);
