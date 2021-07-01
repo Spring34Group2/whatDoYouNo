@@ -30,7 +30,7 @@ h3:after {
 //     }
 // }
 
-.gameFlex {
+.mainFlex {
     display: flex;
     gap: 40px;
     margin-top: 20px;
@@ -68,11 +68,11 @@ header {
 }
 
 // ******START********
-
+ 
 
 // ******GAME STYLES********
 
-.gameContainer {
+.contentContainer {
     text-align: center;
     padding: 12rem 2rem;
     @include background();
@@ -82,6 +82,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-basis: 80%;
 }
 
 .scoreContainer {
