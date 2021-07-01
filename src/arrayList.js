@@ -23,7 +23,27 @@ const homophones = [
   'jeans',
   'gourd',
   'grate',
-  'horde'
+  'horde',
+  'billed', 
+  'birth',
+  'groan',
+  'heel',
+  'holy',
+  'hour',
+  'idol',
+  'knead',
+  'knot',
+  'lesson',
+  'levee',
+  'marshal',
+  'medal',
+  'mite',
+  'mussel',
+  'overdue',
+  'pain',
+  'peddle',
+  'principal',
+  'peak'
 ];
 export default homophones;
 /*
@@ -52,6 +72,26 @@ export default homophones;
 'genes',
 'gored',
 'great',
-'hoard'
+'hoard',
+'build',
+'berth',
+'grown',
+'heal',
+'wholly',
+'our',
+'idle',
+'need', 
+'not',
+'lessen',
+'levy',
+'martial',
+'meddle',
+'might',
+'muscle',
+'overdo',
+'pane',
+'pedal',
+'principle',
+'pique'
 ]
 */
