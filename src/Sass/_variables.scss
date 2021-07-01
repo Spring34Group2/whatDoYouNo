@@ -23,7 +23,7 @@ $background: #e3f4f3;
     padding: .3em 1em;
     font-family: $base-font;
     font-size: $size;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     border: none;
     cursor: pointer;
 }
@@ -42,6 +42,11 @@ $background: #e3f4f3;
     // width: 3.5em;
 
     // figure out best way to change border bottom without changing width of h3. Maybe border bottom? try when less tired
+}
+
+@mixin body-font {
+    font-family: $base-font;
+    letter-spacing: 1.4px;
 }
 
 @mixin background {
