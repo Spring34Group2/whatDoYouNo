@@ -101,24 +101,32 @@ const Game = () => {
   console.log(showDefinition);
   console.log(showNextQuestion);
   return (
-    <section className="game">
+    <section className="game wrapper">
       <div className="counter">
-        <p>Score: {score}</p>
         <p>Round: {rounds}</p>
+        
       </div>
 
-      {rounds >= 11 ? (
-        <Form score={score} />
-      ) : (
-        showDefinition && (
-          <div>
-            <h3>Definition</h3>
-            {wordOne.defs.length ? (
-              <p>{wordOne.defs[0]}</p>
-            ) : wordTwo.defs.length ? (
-              <p>{wordTwo.defs[0]}</p>
-            ) : null}
+      <div className="gameContainer">
+        <div className="scoreContainer">
+          <p>Score: {score}</p>
+        </div>
+        {rounds >= 11 ? (
+          <Form score={score} />
+        ) : (
+          showDefinition && (
+            <div>
+              <div className="definitionContainer">
+                <h3>Definition</h3>
+                {wordOne.defs.length ? (
+                  <p>{wordOne.defs[0]}</p>
+                ) : wordTwo.defs.length ? (
+                  <p>{wordTwo.defs[0]}</p>
+                ) : null}
+              </div>
+      
             {/* wordOne comes from the array list */}
+
             <button
               onClick={(e) => {
                 handleClick(e);
@@ -144,6 +152,7 @@ const Game = () => {
           </div>
         )
       )}
+      </div>
       {showNextQuestion && (
         <>
           <p>{answer}</p>
