@@ -1,43 +1,65 @@
 import firebase from './firebase';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const Form = (props) => {
-  const [userInput, setUserInput] = useState('');
+  const [answerSubmitted, setAnswerSubmitted] = useState(false);
+  // using useForm from react-hook-form library
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   // this function will store information about what the user is typing into the input
   // and will update our userInput state
-  const handleChange = (event) => {
-    setUserInput(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setUserInput(event.target.value);
+  // };
 
   // this function is going to handle pushing the new username to firebase
-  const handleClick = () => {
+  const handleClick = ({ newHighScore }) => {
     // reference our database
     const dbRef = firebase.database().ref();
     // here we will grab the userInput and push it to Firebase
 
-    dbRef.push({ name: userInput, score: props.score });
+    dbRef.push({ name: newHighScore, score: props.score });
 
     // clear the input
-    setUserInput('');
+    // setUserInput('');
   };
-
-  return (
-    <form action="submit">
-      <label htmlFor="newHighScore">Enter your username:</label>
-      <input
-        type="text"
-        id="newHighScore"
-        onChange={handleChange}
-        value={userInput}
-        maxLength="12"
-      />
-      <Link to={'/'}>
-        <button onClick={handleClick}>Add Score</button>
-        <button>Back to Start!</button>
-      </Link>
-    </form>
+  console.log(answerSubmitted);
+  return !answerSubmitted ? (
+    <>
+      <form
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+          handleClick(data);
+          setAnswerSubmitted(true);
+        })}
+      >
+        <label htmlFor="newHighScore">Enter your username:</label>
+        <input
+          type="text"
+          id="newHighScore"
+          // onChange={handleChange}
+          // value={userInput}
+          maxLength="12"
+          className="newHighScore"
+          {...register('newHighScore', { required: true })}
+        />
+        <button type="submit">Add Score</button>
+        {errors.newHighScore && <p>Cannot enter an empty username.</p>}
+        <Link to={'/'}>
+          <button>Back to Start!</button>
+        </Link>
+      </form>
+    </>
+  ) : (
+    <Link to={'/'}>
+      <button>Back to Start!</button>
+    </Link>
   );
 };
 

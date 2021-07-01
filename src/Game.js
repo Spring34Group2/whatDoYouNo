@@ -108,13 +108,13 @@ const Game = () => {
       <section className="wrapper">
         <div className="counter">
           <p>Round: {rounds}</p>
-          
         </div>
 
         <div className="contentContainer">
           <div className="scoreContainer">
             <p>Score: {score}</p>
           </div>
+
           {rounds >= 11 ? (
             <Form score={score} />
           ) : (
@@ -128,51 +128,51 @@ const Game = () => {
                     <p>{wordTwo.defs[0]}</p>
                   ) : null}
                 </div>
-        
-              {/* wordOne comes from the array list */}
-              <div className="wordsContainer">
-                <button
-                  onClick={(e) => {
-                    handleClick(e);
-                    setShowDefinition(false);
-                    setShowNextQuestion(true);
-                  }}
-                >
-                  {/* {wordOne.word} */}
-                  {buttonOne}
-                </button>
-                {/* wordTwo comes from the data returned */}
 
-                <button
-                  onClick={(e) => {
-                    handleClick(e);
-                    setShowDefinition(false);
-                    setShowNextQuestion(true);
-                  }}
-                >
-                  {/* {wordTwo.word} */}
-                  {buttonTwo}
-                </button>
+                {/* wordOne comes from the array list */}
+                <div className="wordsContainer">
+                  <button
+                    onClick={(e) => {
+                      handleClick(e);
+                      setShowDefinition(false);
+                      setShowNextQuestion(true);
+                    }}
+                  >
+                    {/* {wordOne.word} */}
+                    {buttonOne}
+                  </button>
+                  {/* wordTwo comes from the data returned */}
+
+                  <button
+                    onClick={(e) => {
+                      handleClick(e);
+                      setShowDefinition(false);
+                      setShowNextQuestion(true);
+                    }}
+                  >
+                    {/* {wordTwo.word} */}
+                    {buttonTwo}
+                  </button>
+                </div>
               </div>
-            </div>
-          )
-        )}
-        {showNextQuestion && (
-          <>
-            <p>{answer}</p>
-            <button
-              onClick={() => {
-                getRandomIndex();
-                getData();
-                setRounds(rounds + 1);
-                setShowDefinition(!showDefinition);
-                setShowNextQuestion(!showNextQuestion);
-              }}
-            >
-              NEW INDEX
-            </button>
-          </>
-        )}
+            )
+          )}
+          {showNextQuestion && (
+            <>
+              <p>{answer}</p>
+              <button
+                onClick={() => {
+                  getRandomIndex();
+                  getData();
+                  setRounds(rounds + 1);
+                  setShowDefinition(!showDefinition);
+                  setShowNextQuestion(!showNextQuestion);
+                }}
+              >
+                NEW INDEX
+              </button>
+            </>
+          )}
         </div>
         {/* {showNextQuestion && (
           <>
