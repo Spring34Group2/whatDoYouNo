@@ -9,7 +9,7 @@ const Leaderboard = () => {
     dbRef.on('value', (response) => {
       const listResponse = response.val();
       console.log(listResponse);
-      const newState = [];
+      let newState = [];
 
       for (let key in listResponse) {
         newState.push({
@@ -18,7 +18,14 @@ const Leaderboard = () => {
           score: listResponse[key].score,
         });
       }
-
+      newState = newState.sort((a, b) => {
+        if (a.score > b.score) {
+          return -1;
+        } else if (a.score < b.score) {
+          return 1;
+        }
+        return 0;
+      })
       setBoardList(newState);
     });
   }, []);
