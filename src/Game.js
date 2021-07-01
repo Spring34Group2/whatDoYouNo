@@ -29,6 +29,7 @@ const Game = () => {
   useEffect(() => {
     // value = getRandomIndex();
     getData();
+    // eslint-disable-next-line
   }, []);
 
   function randomNumber() {
@@ -89,11 +90,11 @@ const Game = () => {
       // function to assign answers randomly to buttons
       let chanceNumber = Math.random();
       if (chanceNumber > 0.5) {
-        setButtonOne(answer.word)
+        setButtonOne(answer.word);
         setButtonTwo(arrayList[value]);
       } else {
         setButtonOne(arrayList[value]);
-        setButtonTwo(answer.word)
+        setButtonTwo(answer.word);
       }
     });
   }
