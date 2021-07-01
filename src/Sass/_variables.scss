@@ -1,3 +1,5 @@
+// VARIABLES 
+
 $base-font: 'Lato', sans-serif;
 $header-font: 'Josefin Slab', serif;
 
@@ -5,3 +7,100 @@ $body: #333;
 $primary: #6056f9;
 $secondary: #cfff31;
 $background: #e3f4f3;
+
+// MIXINS
+
+// @mixin wrapper {
+//     max-width: 1200px;
+//     width: 95%;
+//     margin: 0 auto;
+// }
+
+@mixin button ($size) {
+    color: $background;
+    background-color: $primary;
+    box-shadow: #cfff31 7px 7px 1px;
+    padding: .3em 1em;
+    font-family: $base-font;
+    font-size: $size;
+    // text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+@mixin h1 {
+    font-family: $header-font;
+    text-transform: uppercase;
+}
+
+@mixin h3 ($size) {
+    font-family: $base-font;
+    font-size: $size;
+    // this could be header-font?
+
+    // border-bottom: $secondary 2px solid;
+    // width: 3.5em;
+
+    // figure out best way to change border bottom without changing width of h3. Maybe border bottom? try when less tired
+}
+
+@mixin body-font {
+    font-family: $base-font;
+    letter-spacing: 1.4px;
+}
+
+@mixin background {
+    background-color: $background;
+}
+
+@mixin darkBoxShadow {
+    box-shadow: #e6e6e6 15px 15px;
+    // change colour to whatever is in guide
+}
+
+
+// // sandbox
+// // (this is just used to test to make sure styles in mixins are working. delete when applied to main style sheet
+
+// .wrapper {
+//     @include wrapper();
+// }
+
+// button {
+//     @include button(1em);
+// }
+
+h1 {
+    @include h1;
+}
+
+h3 {
+    @include h3(2em);
+    // border-bottom: $secondary .3em solid;
+    // width: 50%;
+}
+
+.gameContainer {
+    text-align: center;
+    padding: 2rem;
+    @include background();
+    @include darkBoxShadow();
+    text-align: center;
+}
+
+.definitionContainer {
+    border: $secondary 8px solid;
+    
+}
+
+.scoreContainer {
+    background-color: $secondary;
+    padding: .5em;
+    width: 50%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+// // section {
+// //     background-color: $background;
+// // }

@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import arrayList from './arrayList';
+import Form from './Form';
+import Leaderboard from './Leaderboard';
 
 const Game = () => {
 
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
-  const [buttons, setButtons] = useState([]);
+  const [rounds, setRounds] = useState(1);
+  const [showDefinition, setShowDefinition] = useState(true);
+  const [showNextQuestion, setShowNextQuestion] = useState(false);
+  const [buttonOne, setButtonOne] = useState('');
+  const [buttonTwo, setButtonTwo] = useState('');
   const [wordOne, setWordOne] = useState({
     // from arrayList
     word: '',
@@ -18,30 +24,16 @@ const Game = () => {
     word: '',
     defs: [],
   });
-
   // variables
   let usedNumber = [];
   let value = getRandomIndex();
-  let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
-  // let buttonShuffle;
-  // console.log(buttonShuffle)
-
-  // function getButtons() {
-  //   let buttonShuffle = [wordOne, wordTwo].sort(() => Math.random() - 0.5);
-  //   setButtons(buttonShuffle);
-    
-
-  // };
-
   // creating functions
   useEffect(() => {
     // value = getRandomIndex();
     // getButtons();
     getData();
-    setButtons(buttonShuffle);
-    console.log(buttons)
+    // eslint-disable-next-line
   }, []);
-
   function randomNumber() {
     const max = arrayList.length;
     // let usedNumber = [];
@@ -49,7 +41,6 @@ const Game = () => {
     // console.log(randomNumber);
     return randomNumber;
   }
-
   function getRandomIndex() {
     // let arrayCopy = [...arrayList];
     // let usedNumber = [];
@@ -67,8 +58,7 @@ const Game = () => {
       return number;
     }
   }
-
-  // API CALL 
+  // API CALL
   function getData() {
     axios({
       url: 'https://api.datamuse.com/words',
@@ -91,15 +81,22 @@ const Game = () => {
       answer.word = response.data[0].word;
       answer.defs = [response.data[0].defs[0]];
       // console.log(answer);
-
       // getting the first word response from the data (effect)
       setWordTwo(answer);
       
       
       // definition of the above word
+      // function to assign answers randomly to buttons
+      let chanceNumber = Math.random();
+      if (chanceNumber > 0.5) {
+        setButtonOne(answer.word);
+        setButtonTwo(arrayList[value]);
+      } else {
+        setButtonOne(arrayList[value]);
+        setButtonTwo(answer.word);
+      }
     });
   }
-
   function handleClick(e) {
     if (wordTwo.word === e.target.innerText) {
       setAnswer('correct');
@@ -108,62 +105,98 @@ const Game = () => {
       setAnswer('incorrect');
     }
   }
-
-  // console.log(buttons)
-
-
+  console.log(showDefinition);
+  console.log(showNextQuestion);
   return (
-    <section className="game">
-      <div className="counter">
-        <p>Score: {score}</p>
-      </div>
-      <h3>Definition</h3>
-      {wordOne.defs.length ? (
-        <p>{wordOne.defs[0]}</p>
-      ) : wordTwo.defs.length ? (
-        <p>{wordTwo.defs[0]}</p>
-      ) : null}
-      {/* wordOne comes from the array list */}
+    <>
+      <section className="wrapper">
+        <div className="counter">
+          <p>Round: {rounds}</p>
+        </div>
 
-      { 
-          buttons.map((item, index) => {
-            return (
-              <button key={index} onClick={(e) => {
-                handleClick(e);
-              }}>{item.word}</button>
-              )
-         })
-      }
+        <div className="contentContainer">
+          <div className="scoreContainer">
+            <p>Score: {score}</p>
+          </div>
 
-        
+          {rounds >= 11 ? (
+            <Form score={score} />
+          ) : (
+            showDefinition && (
+              <div>
+                <div className="definitionContainer">
+                  <h3>Definition</h3>
+                  {wordOne.defs.length ? (
+                    <p>{wordOne.defs[0]}</p>
+                  ) : wordTwo.defs.length ? (
+                    <p>{wordTwo.defs[0]}</p>
+                  ) : null}
+                </div>
 
-      <p>{answer}</p>
-      
-      <button
-        onClick={() => {
-          getRandomIndex();
-          getData();
-        }}>
-        NEW INDEX
-      </button>
+                {/* wordOne comes from the array list */}
+                <div className="wordsContainer">
+                  <button
+                    onClick={(e) => {
+                      handleClick(e);
+                      setShowDefinition(false);
+                      setShowNextQuestion(true);
+                    }}
+                  >
+                    {/* {wordOne.word} */}
+                    {buttonOne}
+                  </button>
+                  {/* wordTwo comes from the data returned */}
 
-
-
-
-      {/* <button onClick={handleClick}>{wordOne.word}</button>
-      {/* wordTwo comes from the data returned */}
-
-      {/* <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        {wordTwo.word}
-      </button>
-      
-       */}
-
-    </section>
+                  <button
+                    onClick={(e) => {
+                      handleClick(e);
+                      setShowDefinition(false);
+                      setShowNextQuestion(true);
+                    }}
+                  >
+                    {/* {wordTwo.word} */}
+                    {buttonTwo}
+                  </button>
+                </div>
+              </div>
+            )
+          )}
+          {showNextQuestion && (
+            <>
+              <p>{answer}</p>
+              <button
+                onClick={() => {
+                  getRandomIndex();
+                  getData();
+                  setRounds(rounds + 1);
+                  setShowDefinition(!showDefinition);
+                  setShowNextQuestion(!showNextQuestion);
+                }}
+              >
+                NEW INDEX
+              </button>
+            </>
+          )}
+        </div>
+        {/* {showNextQuestion && (
+          <>
+            <p>{answer}</p>
+            <button
+              onClick={() => {
+                getRandomIndex();
+                getData();
+                setRounds(rounds + 1);
+                setShowDefinition(!showDefinition);
+                setShowNextQuestion(!showNextQuestion);
+              }}
+            >
+              NEW INDEX
+            </button>
+          </>
+        )} */}
+      </section>
+      <Leaderboard />
+    </>
   );
 };
 export default Game;
