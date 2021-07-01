@@ -95,10 +95,10 @@ const Game = () => {
   }
   function handleClick(e) {
     if (wordTwo.word === e.target.innerText) {
-      setAnswer('correct');
+      setAnswer(`Correct!`);
       setScore(score + 1);
     } else {
-      setAnswer('incorrect');
+      setAnswer(`Sorry, the correct answer was "${wordTwo.word}".`);
     }
   }
   console.log(showDefinition);
@@ -158,7 +158,7 @@ const Game = () => {
             )
           )}
           {showNextQuestion && (
-            <>
+            <div className="resultNextQuestion">
               <p>{answer}</p>
               <button
                 onClick={() => {
@@ -169,9 +169,9 @@ const Game = () => {
                   setShowNextQuestion(!showNextQuestion);
                 }}
               >
-                NEW INDEX
+                NEXT QUESTION!
               </button>
-            </>
+            </div>
           )}
         </div>
         {/* {showNextQuestion && (
