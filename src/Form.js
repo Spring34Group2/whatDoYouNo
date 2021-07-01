@@ -24,7 +24,6 @@ const Form = (props) => {
         setUserInput('')
     }
 
-
     return (
         <form action="submit">
         <label htmlFor="newHighScore">
