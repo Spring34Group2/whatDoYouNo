@@ -39,10 +39,11 @@ const Form = (props) => {
           setAnswerSubmitted(true);
         })}
       >
-        <label htmlFor="newHighScore">Enter your username:</label>
+        <label htmlFor="newHighScore" className="sr-only">Enter your username:</label>
         <input
           type="text"
           id="newHighScore"
+          placeholder="Enter your username:"
           // onChange={handleChange}
           // value={userInput}
           maxLength="12"
@@ -58,7 +59,7 @@ const Form = (props) => {
     </>
   ) : (
     <Link to={'/'}>
-      <button>Back to Start!</button>
+        <button>Back to Start!</button>
     </Link>
   );
 };
