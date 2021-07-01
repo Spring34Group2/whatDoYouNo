@@ -12,10 +12,12 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <main>
-          <Route exact path="/" component={Start} />
-          <Route exact path="/game" component={Game} />
-          <Leaderboard />
+        <main className="wrapper">
+            <Route exact path="/" component={Start} />
+          <div className="gameFlex">
+            <Route exact path="/game" component={Game} />
+            <Leaderboard />
+          </div>
         </main>
         <Footer />
       </div>

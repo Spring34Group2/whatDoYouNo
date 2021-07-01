@@ -1,0 +1,149 @@
+h1 {
+    @include h1;
+    text-align: left;
+    margin: 40px auto;
+    width: 50%;
+    z-index: 20;
+}
+
+h3 {
+    @include h3(2em);
+}
+
+h3:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding-top: 2px;
+    border-bottom: $secondary 5px solid;
+}
+
+// button {
+//     @include button(1rem);
+//     &:hover {
+//         color: $secondary;
+//         &:active {
+//             transform: scale(0.98);
+//             box-shadow: 3px 2px 22px 1px rgba(85, 85, 85, 0.24);
+//         }
+//     }
+// }
+
+.gameFlex {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+// ******HEADER********
+
+header {
+    background-image: url(../assets/hexagonal-pattern.png);
+    height:  40vh; 
+    background-position: center; 
+    position: relative; 
+    background-repeat: no-repeat; 
+}
+
+.headerContainer {
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.headerContainer::before {
+    content: "";
+    background-image: linear-gradient(to bottom right, #6056f9, #e3f4f3, #cfff31);
+    opacity: 0.85;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+// ******START********
+
+
+// ******GAME STYLES********
+
+.gameContainer {
+    text-align: center;
+    padding: 12rem 2rem;
+    @include background();
+    @include darkBoxShadow();
+    text-align: center;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.scoreContainer {
+    background-color: $secondary;
+    padding: .5em;
+    width: 15%;
+    min-width: 100px;
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.definitionContainer {
+    border: $secondary 8px solid;
+    width: 62%;
+    min-width: 300px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    height: 260px;
+}
+
+.wordsContainer {
+    width: 20%;
+    min-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.counter {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+// ******LEADERBOARD STYLES********
+
+.leaderboard {
+    @include background();
+    @include darkBoxShadow();
+    flex-basis: 30%;
+        h2 {
+            text-align: center;
+        }
+}
+
+.leaderboard ul {
+   background: $secondary;
+   border: 8px solid $primary;
+   height: 80%;
+   margin: 15px;
+    li {
+        display: flex;
+        justify-content:space-between;
+        padding: 8px;
+    }
+}
+
+// ******FOOTER STYLES********
+
+footer {
+    padding: 2rem 0;
+}

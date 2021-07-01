@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Start = () => {
     return (
-        <div>
+        <div class="gameContainer">
             <h2>How to play?</h2>
             <p>
             What do you no? Do you know things? Let's find out! You will be presented with two randomly generated homophonous words - like piece and peace - and a single definition. Users must match the correct homophone to the definition.
