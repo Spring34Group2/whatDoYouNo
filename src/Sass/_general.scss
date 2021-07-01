@@ -3,7 +3,10 @@ html {
 }
 
 body {
-    font-family: $base-font;
+    @include body-font;
+    color: #333;
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: #333 $secondary;
 }
 
 * {
