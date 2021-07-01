@@ -1,5 +1,6 @@
 import firebase from './firebase';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Form = (props) => {
 
@@ -12,8 +13,7 @@ const Form = (props) => {
         }
 
     // this function is going to handle pushing the new username to firebase
-    const handleClick = (event) => {
-        event.preventDefault();
+    const handleClick = () => {
         // reference our database
         const dbRef = firebase.database().ref();
         // here we will grab the userInput and push it to Firebase
@@ -24,18 +24,20 @@ const Form = (props) => {
         setUserInput('')
     }
 
-
     return (
         <form action="submit">
         <label htmlFor="newHighScore">
             Enter your username:
         </label>
         <input 
-        type="text" 
-        id="newHighScore" onChange={handleChange}
-        value={userInput}/>
-
-        <button onClick = {handleClick}>Add Score</button>
+            type="text" 
+            id="newHighScore" onChange={handleChange}
+            value={userInput}
+        />
+        <Link to={'/'}>
+            <button onClick = {handleClick}>Add Score</button>
+            <button>Back to Start!</button>
+        </Link>
     </form>
     )
 }

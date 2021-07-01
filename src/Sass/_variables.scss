@@ -5,3 +5,20 @@ $body: #333;
 $primary: #6056f9;
 $secondary: #cfff31;
 $background: #e3f4f3;
+
+@mixin button ($size) {
+    color: $background;
+    background-color: $primary;
+    box-shadow: #cfff31 7px 7px 1px;
+    padding: .3em 1em;
+    font-family: $base-font;
+    font-size: $size;
+    text-transform: uppercase;
+}
+
+
+// sandbox
+
+button {
+    @include button(1em);
+}

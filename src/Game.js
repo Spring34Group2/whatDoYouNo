@@ -9,6 +9,8 @@ const Game = () => {
   const [rounds, setRounds] = useState(1);
   const [showDefinition, setShowDefinition] = useState(true);
   const [showNextQuestion, setShowNextQuestion] = useState(false);
+  const [buttonOne, setButtonOne] = useState('');
+  const [buttonTwo, setButtonTwo] = useState('');
   const [wordOne, setWordOne] = useState({
     word: '',
     defs: [],
@@ -77,6 +79,15 @@ const Game = () => {
       // getting the first word response from the data (effect)
       setWordTwo(answer);
       // definition of the above word
+      // function to assign answers randomly to buttons
+      let chanceNumber = Math.random();
+      if (chanceNumber > 0.5) {
+        setButtonOne(answer.word)
+        setButtonTwo(arrayList[value]);
+      } else {
+        setButtonOne(arrayList[value]);
+        setButtonTwo(answer.word)
+      }
     });
   }
   function handleClick(e) {
@@ -96,7 +107,7 @@ const Game = () => {
         <p>Round: {rounds}</p>
       </div>
 
-      {rounds >= 10 ? (
+      {rounds >= 11 ? (
         <Form score={score} />
       ) : (
         showDefinition && (
@@ -113,11 +124,10 @@ const Game = () => {
                 handleClick(e);
                 setShowDefinition(false);
                 setShowNextQuestion(true);
-                console.log(showDefinition);
-                console.log(showNextQuestion);
               }}
             >
-              {wordOne.word}
+              {/* {wordOne.word} */}
+              {buttonOne}
             </button>
             {/* wordTwo comes from the data returned */}
 
@@ -126,11 +136,10 @@ const Game = () => {
                 handleClick(e);
                 setShowDefinition(false);
                 setShowNextQuestion(true);
-                console.log(showDefinition);
-                console.log(showNextQuestion);
               }}
             >
-              {wordTwo.word}
+              {/* {wordTwo.word} */}
+              {buttonTwo}
             </button>
           </div>
         )
