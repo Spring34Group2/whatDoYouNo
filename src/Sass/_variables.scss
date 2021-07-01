@@ -10,11 +10,11 @@ $background: #e3f4f3;
 
 // MIXINS
 
-@mixin wrapper {
-    max-width: 1200px;
-    width: 95%;
-    margin: 0 auto;
-}
+// @mixin wrapper {
+//     max-width: 1200px;
+//     width: 95%;
+//     margin: 0 auto;
+// }
 
 @mixin button ($size) {
     color: $background;
@@ -52,12 +52,16 @@ $background: #e3f4f3;
 }
 
 
-// sandbox
-// (this is just used to test to make sure styles in mixins are working. delete when applied to main style sheet
+// // sandbox
+// // (this is just used to test to make sure styles in mixins are working. delete when applied to main style sheet
 
-button {
-    @include button(1em);
-}
+// .wrapper {
+//     @include wrapper();
+// }
+
+// button {
+//     @include button(1em);
+// }
 
 h1 {
     @include h1;
@@ -90,6 +94,6 @@ h3 {
     font-weight: bold;
 }
 
-// section {
-//     background-color: $background;
-// }
+// // section {
+// //     background-color: $background;
+// // }
