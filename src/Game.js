@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import arrayList from './arrayList';
 import Form from './Form';
+import Leaderboard from './Leaderboard';
+
 const Game = () => {
   //setting state
   const [answer, setAnswer] = useState('');
@@ -102,76 +104,95 @@ const Game = () => {
   console.log(showDefinition);
   console.log(showNextQuestion);
   return (
-    <section className="game wrapper">
-      <div className="counter">
-        <p>Round: {rounds}</p>
-        
-      </div>
-
-      <div className="gameContainer">
-        <div className="scoreContainer">
-          <p>Score: {score}</p>
+    <>
+      <section className="wrapper">
+        <div className="counter">
+          <p>Round: {rounds}</p>
+          
         </div>
-        {rounds >= 11 ? (
-          <Form score={score} />
-        ) : (
-          showDefinition && (
-            <div>
-              <div className="definitionContainer">
-                <h3>Definition</h3>
-                {wordOne.defs.length ? (
-                  <p>{wordOne.defs[0]}</p>
-                ) : wordTwo.defs.length ? (
-                  <p>{wordTwo.defs[0]}</p>
-                ) : null}
-              </div>
-      
-            {/* wordOne comes from the array list */}
-            <div className="wordsContainer">
-              <button
-                onClick={(e) => {
-                  handleClick(e);
-                  setShowDefinition(false);
-                  setShowNextQuestion(true);
-                }}
-              >
-                {/* {wordOne.word} */}
-                {buttonOne}
-              </button>
-              {/* wordTwo comes from the data returned */}
 
-              <button
-                onClick={(e) => {
-                  handleClick(e);
-                  setShowDefinition(false);
-                  setShowNextQuestion(true);
-                }}
-              >
-                {/* {wordTwo.word} */}
-                {buttonTwo}
-              </button>
-            </div>
+        <div className="contentContainer">
+          <div className="scoreContainer">
+            <p>Score: {score}</p>
           </div>
-        )
-      )}
-      </div>
-      {showNextQuestion && (
-        <>
-          <p>{answer}</p>
-          <button
-            onClick={() => {
-              getRandomIndex();
-              getData();
-              setRounds(rounds + 1);
-              setShowDefinition(!showDefinition);
-              setShowNextQuestion(!showNextQuestion);
-            }}
-          >
-            NEW INDEX
-          </button>
-        </>
-      )}
-    </section>
+          {rounds >= 11 ? (
+            <Form score={score} />
+          ) : (
+            showDefinition && (
+              <div>
+                <div className="definitionContainer">
+                  <h3>Definition</h3>
+                  {wordOne.defs.length ? (
+                    <p>{wordOne.defs[0]}</p>
+                  ) : wordTwo.defs.length ? (
+                    <p>{wordTwo.defs[0]}</p>
+                  ) : null}
+                </div>
+        
+              {/* wordOne comes from the array list */}
+              <div className="wordsContainer">
+                <button
+                  onClick={(e) => {
+                    handleClick(e);
+                    setShowDefinition(false);
+                    setShowNextQuestion(true);
+                  }}
+                >
+                  {/* {wordOne.word} */}
+                  {buttonOne}
+                </button>
+                {/* wordTwo comes from the data returned */}
+
+                <button
+                  onClick={(e) => {
+                    handleClick(e);
+                    setShowDefinition(false);
+                    setShowNextQuestion(true);
+                  }}
+                >
+                  {/* {wordTwo.word} */}
+                  {buttonTwo}
+                </button>
+              </div>
+            </div>
+          )
+        )}
+        {showNextQuestion && (
+          <>
+            <p>{answer}</p>
+            <button
+              onClick={() => {
+                getRandomIndex();
+                getData();
+                setRounds(rounds + 1);
+                setShowDefinition(!showDefinition);
+                setShowNextQuestion(!showNextQuestion);
+              }}
+            >
+              NEW INDEX
+            </button>
+          </>
+        )}
+        </div>
+        {/* {showNextQuestion && (
+          <>
+            <p>{answer}</p>
+            <button
+              onClick={() => {
+                getRandomIndex();
+                getData();
+                setRounds(rounds + 1);
+                setShowDefinition(!showDefinition);
+                setShowNextQuestion(!showNextQuestion);
+              }}
+            >
+              NEW INDEX
+            </button>
+          </>
+        )} */}
+      </section>
+      <Leaderboard />
+    </>
   );
 };
 export default Game;

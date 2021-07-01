@@ -2,7 +2,7 @@ import './Sass/App.scss';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import firebase from './firebase';
 import Header from './Header';
-import Leaderboard from './Leaderboard';
+// import Leaderboard from './Leaderboard';
 import Start from './Start';
 import Game from './Game';
 import Footer from './Footer';
@@ -14,9 +14,9 @@ function App() {
         <Header />
         <main className="wrapper">
             <Route exact path="/" component={Start} />
-          <div className="gameFlex">
+          <div className="mainFlex">
             <Route exact path="/game" component={Game} />
-            <Leaderboard />
+            {/* <Leaderboard /> */}
           </div>
         </main>
         <Footer />
