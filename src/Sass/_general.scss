@@ -6,7 +6,7 @@ body {
     @include body-font;
     color: #333;
     scrollbar-width: thin;          /* "auto" or "thin" */
-    scrollbar-color: #333 $secondary;
+    scrollbar-color: #fff #e6e6e6;
 }
 
 * {
