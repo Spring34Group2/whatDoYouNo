@@ -10,7 +10,7 @@ const Form = (props) => {
 let fxProps = {
   count: 3,
   interval: 3500,
-  colors: ['black', 'grey', 'white'],
+  colors: ['aquamarine', 'lightcoral', 'gold'],
   calc: (props, i) => ({
     ...props,
       x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
