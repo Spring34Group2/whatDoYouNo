@@ -62,10 +62,25 @@ $background: #e3f4f3;
 // // sandbox
 // // (this is just used to test to make sure styles in mixins are working. delete when applied to main style sheet
 
-.counter {
-    background-color: $secondary;
+.progressBorder {
     border: 10px $primary solid;
-    width: 50%;
+    // border: 10px $primary solid;
+    // width: 50%;
+    // height: 100%;
+    padding: 0;
+    margin: 0;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+}
+
+.progressBar {
+    border: 10px $secondary solid;
+    margin: 0;
+    padding: 0;
+    transition: width 200ms ease;
+    // width: 50%;
 }
 
 
