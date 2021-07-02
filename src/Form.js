@@ -2,8 +2,22 @@ import firebase from './firebase';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { Fireworks } from 'fireworks/lib/react';
 
 const Form = (props) => {
+
+  // fireworks animation
+let fxProps = {
+  count: 3,
+  interval: 3500,
+  colors: ['aquamarine', 'lightcoral', 'gold'],
+  calc: (props, i) => ({
+    ...props,
+      x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
+      y: 200 + Math.random() * 100 - 50 + (i === 2 ? -80 : 0)
+    })
+  }
+
   const [answerSubmitted, setAnswerSubmitted] = useState(false);
   // using useForm from react-hook-form library
   const {
@@ -25,6 +39,7 @@ const Form = (props) => {
   };
   return !answerSubmitted ? (
     <>
+    <Fireworks {...fxProps} />
       <form
         onSubmit={handleSubmit((data) => {
           handleClick(data);
