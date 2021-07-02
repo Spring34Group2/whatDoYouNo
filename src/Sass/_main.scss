@@ -1,11 +1,12 @@
 
 h1 {
     @include h1;
+    background-color: $secondary;
     text-align: center;
-    margin: 40px auto;
-    z-index: 20;
+    margin: 35px auto;
     font-size: 4rem;
     font-weight: 700;
+    padding: 2rem 4rem;
 }
 
 h3 {
@@ -41,32 +42,16 @@ button {
 // ******HEADER********
 
 header {
-    background-image: url(../assets/hexagonal-pattern.png);
-    height:  40vh; 
-    background-position: center; 
-    position: relative; 
-    background-repeat: no-repeat; 
+    background-color: $primary;
+    height:  40vh;  
 }
 
 .headerContainer {
-    z-index: 10;
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
-}
-
-.headerContainer::before {
-    content: "";
-    background-image: linear-gradient(to bottom right, #6056f9, #e3f4f3, #cfff31);
-    opacity: 0.85;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 // ******START********
@@ -218,231 +203,21 @@ form {
 // ******FOOTER STYLES********
 
 footer {
-    padding: 2rem 0;
-}
-
-
-// ****MEDIA QUERIES***********************************************************************************************
-
-@media (max-width: 900px) {
-    
-    h1 {
-        font-size: 3rem;
-    }
-    
-    .mainFlex {
-        // display: flex;
-        flex-direction: column;
-        // gap: 40px;
-        // margin-top: 20px;
-    }
-    
-    // ******HEADER********
-    
-    header {
-        height:  20vh; 
-    }
-    
-    // ******START********
-    
-    .startFlex { 
-        padding: 2rem 3rem;
-    }
-    
-    .startFlex h2 {
-        margin-bottom: 10px;
-    }
-    
-    .startFlex div {
-        padding-bottom: 1rem;
-    }
-    
-    .startFlex ol {
-        padding-bottom: 6px;
-    }
-    
-    // ******GAME STYLES********
-    
-    .contentContainer {
-        padding: 12rem 2rem;
-    }
-    
-    .scoreContainer {
-        width: 20%;
-    }
-    
-    .definitionContainer {
-        width: 80%;
-        padding: 0 1rem;
-    }
-    
-    
-    // ******LEADERBOARD STYLES********
-    
-    .leaderboard {
-        width: 500px;
-        min-width: 280px;
-        margin: 0 auto;
-            h2 {
-                margin: 12px 0;
-            }
+    background-color: $primary;
+    margin-top: 0.8rem;
+    padding: 1rem 0;
+    text-align: center;
+    p {
+        background-color: $secondary;
+        padding: 0.5rem 2rem;
+        span {
+            display: block;
+        }
     }
 }
 
-
-
-
-@media (max-width: 500px) {
-    h1 {
-        font-size: 2rem;
-    }
-    
-    button {
-        width: 60%;
-    }
-    
-    .mainFlex {
-        margin: 40px 10px 0;
-    }
-    
-    // ******HEADER********
-    
-    header {
-        height:  20vh; 
-    }
-    
-    // ******START********
-    
-    .startFlex {
-        padding: 2rem 1.3rem;
-    }
-    
-    .startFlex h2 {
-        margin-bottom: 14px;
-        font-size: 1.2rem;
-    }
-    
-    .startFlex div {
-            p {
-                text-align: center;
-            }
-    }
-    
-    .startFlex ol {
-        padding-bottom: 6px;
-    }
-    
-    // ******GAME STYLES********
-    
-    .contentContainer {
-        padding: 12rem 1rem;
-    }
-    
-    .scoreContainer {
-        width: 60%;
-    }
-    
-    .definitionContainer {
-        width: 100%;
-        padding: 0 1rem;
-    }
-    
-    
-    // ******LEADERBOARD STYLES********
-    
-    .leaderboard {
-        width: 320px;
-        min-width: 150px;
-        margin: 0 auto;
-            h2 {
-                margin: 12px 0;
-            }
-    }
-
-    footer {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
+.footerWrapper {
+    display: inline-block;
 }
 
 
-
-
-@media (max-width: 360px) {
-    body {
-        font-size: 0.8rem;
-        letter-spacing: 1px;
-    }
-
-    h1 {
-        margin: 40px 5px;
-        font-size: 2rem;
-    }
-    
-    h3 {
-        margin-bottom: 1rem;
-    }
-    
-    button {
-        @include button(0.8rem);
-        width: 60%;
-    }
-    
-    .mainFlex {
-        margin: 20px 10px 0 0;
-    }
-    
-    // ******HEADER********
-    
-    header {
-        height:  20vh; 
-    }
-    
-    // ******START********
-    
-    .startFlex {
-        padding: 2rem 0.9rem;
-    }
-    
-    .startFlex h2 {
-        margin-bottom: 14px;
-        font-size: 1.2rem;
-    }
-    
-    .startFlex div {
-            p {
-                text-align: center;
-            }
-    }
-    
-    .startFlex ol {
-        padding-bottom: 6px;
-    }
-    
-    // ******GAME STYLES********
-    
-    .contentContainer {
-        padding: 2rem 1rem 2rem 0.7rem;
-    }
-    
-    .scoreContainer {
-        width: 60%;
-    }
-    
-    .definitionContainer {
-        width: 100%;
-        height: auto;
-        padding: 1rem;
-    }
-    
-    // ******LEADERBOARD STYLES********
-    
-    .leaderboard {
-        width: 250px;
-        min-width: 250px;
-        margin: 0 auto;
-            h2 {
-                margin: 12px 0;
-            }
-    }
-}

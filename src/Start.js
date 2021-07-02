@@ -4,7 +4,7 @@ import Leaderboard from "./Leaderboard";
 const Start = () => {
     return (
         <div className="mainFlex">
-            <div class="startFlex">
+            <div className="startFlex">
                 <div>
                     <h2>How to play?</h2>
                     <p>
