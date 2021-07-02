@@ -10,7 +10,7 @@ const Game = () => {
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
-  const [rounds, setRounds] = useState(10);
+  const [rounds, setRounds] = useState(1);
   const [showDefinition, setShowDefinition] = useState(true);
   const [showNextQuestion, setShowNextQuestion] = useState(false);
   const [buttonOne, setButtonOne] = useState('');
