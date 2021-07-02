@@ -4,14 +4,14 @@ import Leaderboard from "./Leaderboard";
 const Start = () => {
     return (
         <div className="mainFlex">
-            <div class="startFlex">
+            <div className="startFlex">
                 <div>
                     <h2>How to play?</h2>
                     <p>
                     What do you no? Do you know things? Let's find out! You will be presented with two randomly generated homophonous words - like piece and peace - and a single definition. Users must match the correct homophone to the definition.
                     </p>
                 </div>
-                
+
                 <div>
                     <h2>What is a homophone?</h2>
                     <p>Merriam-Webster defines a homophone as: </p>
