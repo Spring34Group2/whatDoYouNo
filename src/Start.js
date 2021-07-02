@@ -1,19 +1,34 @@
 import { Link } from "react-router-dom";
+import Leaderboard from "./Leaderboard";
 
 const Start = () => {
     return (
-        <div>
-            <h2>What is a homophone?</h2>
-            <p>
-            Cheese bandbox bandbox lineup corner, bases loaded mustard. Outfield basehit double switch mound save pine tar second base. Defensive indifference hardball gold glove warning track check swing gapper strike zone. Arm hit by pitch astroturf pine tar cookie pine tar doubleheader unearned run. Loss peanuts field wild pitch losses leadoff choke up. Wins no-hitter yankees slide base reliever dead red.
-            </p>
-            <h2>How to play?</h2>
-            <p>
-            Bag baltimore chop tigers grass screwball scorecard pennant butcher boy. Triple-A batting average third baseman cracker jack butcher boy petey around the horn stance. 4-6-3 hot dog disabled list pinch hit no-hitter pull crooked number. Series batter's box fair balk hitter, sidearm wild pitch. First baseman fair choke up sacrifice fly gapper walk off reliever scorecard. Small ball league first baseman game play count assist fall classic first baseman.
-            </p>
-            <Link to={`/game/`}>
-                <button>Start</button>
-            </Link>
+        <div className="mainFlex">
+            <div class="startFlex">
+                <div>
+                    <h2>How to play?</h2>
+                    <p>
+                    What do you no? Do you know things? Let's find out! You will be presented with two randomly generated homophonous words - like piece and peace - and a single definition. Users must match the correct homophone to the definition.
+                    </p>
+                </div>
+                {/* we can remove the stupid bojack reference if you want */}
+                <div>
+                    <h2>What is a homophone?</h2>
+                    <p>Merriam-Webster defines a homophone as: </p>
+                    <ol>
+                        <li>One of two or more words pronounced alike but different in meaning or derivation or spelling (such as the words to, too, and two)</li>
+
+                        <li>A character or group of characters pronounced the same as another character or group</li>
+                        
+                        <li>An awful sentence with mostly homophones: Eye no their is a chants some of these hear wheel give yew paws, but ewe can solve this tuff won</li>
+                    </ol>
+                </div>
+                
+                <Link to={`/game/`}>
+                    <button>Start</button>
+                </Link>
+            </div>
+            <Leaderboard />
         </div>
     )
 }
