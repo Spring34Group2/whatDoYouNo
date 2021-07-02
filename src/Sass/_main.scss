@@ -104,6 +104,24 @@ header {
 
 // ******GAME STYLES********
 
+.progressBorder {
+    border: 10px $primary solid;
+    padding: 0;
+    margin: 0;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+}
+
+.progressBar {
+    border: 10px $secondary solid;
+    margin: 0;
+    padding: 0;
+    transition: width 200ms ease;
+}
+
+
 .contentContainer {
     text-align: center;
     padding: 12rem 2rem;

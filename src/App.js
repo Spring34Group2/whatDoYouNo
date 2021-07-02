@@ -1,8 +1,6 @@
 import './Sass/App.scss';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import firebase from './firebase';
 import Header from './Header';
-// import Leaderboard from './Leaderboard';
 import Start from './Start';
 import Game from './Game';
 import Footer from './Footer';
@@ -16,7 +14,6 @@ function App() {
             <Route exact path="/" component={Start} />
           <div className="mainFlex">
             <Route exact path="/game" component={Game} />
-            {/* <Leaderboard /> */}
           </div>
         </main>
         <Footer />
