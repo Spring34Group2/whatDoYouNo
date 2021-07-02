@@ -20,42 +20,34 @@ const Game = () => {
     word: '',
     defs: [],
   });
+
   const [wordTwo, setWordTwo] = useState({
     // from API
     word: '',
     defs: [],
   });
+  
   // variables
   let usedNumber = [];
   let value = getRandomIndex();
+
   // creating functions
   useEffect(() => {
-    // value = getRandomIndex();
-    // getButtons();
     getData();
     // eslint-disable-next-line
   }, []);
   function randomNumber() {
     const max = arrayList.length;
-    // let usedNumber = [];
     let randomNumber = Math.floor(Math.random() * max);
-    // console.log(randomNumber);
     return randomNumber;
   }
   function getRandomIndex() {
-    // let arrayCopy = [...arrayList];
-    // let usedNumber = [];
     let number = randomNumber();
-    // console.log(number);
     if (usedNumber.includes(number)) {
       usedNumber.push(number);
-      console.log(usedNumber);
-      console.log(number);
       getRandomIndex();
     } else {
       usedNumber.push(number);
-      console.log(usedNumber);
-      console.log(number);
       return number;
     }
   }
@@ -71,8 +63,6 @@ const Game = () => {
         // getting definition
       },
     }).then((response) => {
-      // console.log(response);
-      // setData(response.data[0].defs[0]);
       // passing in first value from array (affect)
       setWordOne({
         word: arrayList[value],
@@ -83,7 +73,6 @@ const Game = () => {
       answer.defs = [response.data[0].defs[0]];
       // slicing the added n, v, adv, adj from the definition
       answer.defs[0] = answer.defs[0].slice(answer.defs[0].indexOf('\t'));
-      // console.log(answer);
       // getting the first word response from the data (effect)
       setWordTwo(answer);
       
@@ -108,9 +97,7 @@ const Game = () => {
       setAnswer(`Sorry, the correct answer was "${wordTwo.word}".`);
     }
   }
-  console.log(showDefinition);
-  console.log(showNextQuestion);
-  // console.log(rounds)
+
   return (
     <>
       <section className="wrapper">
@@ -122,25 +109,6 @@ const Game = () => {
           <Progress rounds={rounds}/>
         </div>
           }
-          
-
-          {/* { rounds === 1 ? (
-            <div className="progressBorder">
-              <div className="progressBar"
-              style={{width: 10%}}>
-              </div>
-            </div> 
-            ) 
-            : null
-          } */}
-
-        {/* <div className="progressBorder">
-          <div style={{width: "10%"}}
-            className="progressBar">
-            </div>
-        </div>
-           */}
-        
 
         <div className="contentContainer">
           <div className="scoreContainer">
@@ -206,30 +174,9 @@ const Game = () => {
             </div>
           )}
         </div>
-        {/* {showNextQuestion && (
-          <>
-            <p>{answer}</p>
-            <button
-              onClick={() => {
-                getRandomIndex();
-                getData();
-                setRounds(rounds + 1);
-                setShowDefinition(!showDefinition);
-                setShowNextQuestion(!showNextQuestion);
-              }}
-            >
-              NEW INDEX
-            </button>
-          </>
-        )} */}
       </section>
       <Leaderboard />
     </>
   );
 };
 export default Game;
-
-
-// create new state that is empty array
-// this will store value from wordOne & wordTwo (in array)
-//

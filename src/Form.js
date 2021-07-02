@@ -14,9 +14,6 @@ const Form = (props) => {
 
   // this function will store information about what the user is typing into the input
   // and will update our userInput state
-  // const handleChange = (event) => {
-  //   setUserInput(event.target.value);
-  // };
 
   // this function is going to handle pushing the new username to firebase
   const handleClick = ({ newHighScore }) => {
@@ -25,16 +22,11 @@ const Form = (props) => {
     // here we will grab the userInput and push it to Firebase
 
     dbRef.push({ name: newHighScore, score: props.score });
-
-    // clear the input
-    // setUserInput('');
   };
-  console.log(answerSubmitted);
   return !answerSubmitted ? (
     <>
       <form
         onSubmit={handleSubmit((data) => {
-          console.log(data);
           handleClick(data);
           setAnswerSubmitted(true);
         })}
@@ -44,8 +36,6 @@ const Form = (props) => {
           type="text"
           id="newHighScore"
           placeholder="Enter your username:"
-          // onChange={handleChange}
-          // value={userInput}
           maxLength="12"
           className="newHighScore"
           {...register('newHighScore', { required: true })}

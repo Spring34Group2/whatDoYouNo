@@ -8,7 +8,6 @@ const Leaderboard = () => {
     const dbRef = firebase.database().ref();
     dbRef.on('value', (response) => {
       const listResponse = response.val();
-      console.log(listResponse);
       let newState = [];
 
       for (let key in listResponse) {
