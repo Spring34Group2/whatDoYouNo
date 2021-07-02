@@ -3,8 +3,10 @@ import axios from 'axios';
 import arrayList from './arrayList';
 import Form from './Form';
 import Leaderboard from './Leaderboard';
+import Progress from './Progress';
 
 const Game = () => {
+
   //setting state
   const [answer, setAnswer] = useState('');
   const [score, setScore] = useState(0);
@@ -14,10 +16,12 @@ const Game = () => {
   const [buttonOne, setButtonOne] = useState('');
   const [buttonTwo, setButtonTwo] = useState('');
   const [wordOne, setWordOne] = useState({
+    // from arrayList
     word: '',
     defs: [],
   });
   const [wordTwo, setWordTwo] = useState({
+    // from API
     word: '',
     defs: [],
   });
@@ -27,6 +31,7 @@ const Game = () => {
   // creating functions
   useEffect(() => {
     // value = getRandomIndex();
+    // getButtons();
     getData();
     // eslint-disable-next-line
   }, []);
@@ -51,8 +56,6 @@ const Game = () => {
       usedNumber.push(number);
       console.log(usedNumber);
       console.log(number);
-      // for rounds
-      // setRounds(rounds + 1);
       return number;
     }
   }
@@ -83,6 +86,8 @@ const Game = () => {
       // console.log(answer);
       // getting the first word response from the data (effect)
       setWordTwo(answer);
+      
+      
       // definition of the above word
       // function to assign answers randomly to buttons
       let chanceNumber = Math.random();
@@ -105,12 +110,37 @@ const Game = () => {
   }
   console.log(showDefinition);
   console.log(showNextQuestion);
+  // console.log(rounds)
   return (
     <>
       <section className="wrapper">
+          { rounds >= 11 ? null : 
         <div className="counter">
           <p>Round: {rounds}</p>
+          {/* this should get moved to Progress.js if it is to be displayed on the screen */}
+
+          <Progress rounds={rounds}/>
         </div>
+          }
+          
+
+          {/* { rounds === 1 ? (
+            <div className="progressBorder">
+              <div className="progressBar"
+              style={{width: 10%}}>
+              </div>
+            </div> 
+            ) 
+            : null
+          } */}
+
+        {/* <div className="progressBorder">
+          <div style={{width: "10%"}}
+            className="progressBar">
+            </div>
+        </div>
+           */}
+        
 
         <div className="contentContainer">
           <div className="scoreContainer">
@@ -198,3 +228,8 @@ const Game = () => {
   );
 };
 export default Game;
+
+
+// create new state that is empty array
+// this will store value from wordOne & wordTwo (in array)
+//
