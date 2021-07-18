@@ -4,11 +4,11 @@ const Footer = () => {
             <div className="footerWrapper">
                 <p>
                     Created at <a href="https://www.junocollege.com">Juno College</a>
-                    <span></span>{" "}By{" "}
-                    <a href="https://github.com/NicoleBrady">Nicole Brady</a>,{" "}
-                    <a href="https://github.com/Edjrich">Eric Richardson</a>,{" "}
-                    <a href="https://github.com/AHeroOfTime">Aaron Rodriguez</a>, and{" "}
-                    <a href="https://github.com/michellelven">Michelle Chiasson</a>.
+                    <span></span> By{" "}
+                    <a href="https://www.nicolebrady.dev/">Nicole Brady</a>,{" "}
+                    <a href="https://ericrichardson.ca/">Eric Richardson</a>,{" "}
+                    <a href="https://www.aaroner.dev/">Aaron Rodriguez</a>, and{" "}
+                    <a href="https://www.michellelven.com/">Michelle Chiasson</a>.
                 </p>
             </div>
         </footer>
